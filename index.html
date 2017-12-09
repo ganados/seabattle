@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Sea Battle</title>
+<meta charset="UTF-8">
+    <title>Sea Battle</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <div id="sea-battle"></div>
-  
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/phaser.js"></script>
-  <script src="assets/game/main.js"></script>
+    <!-- main DOM obj for game canvas -->
+    <div id="game-container"></div>
+
+    <!-- dependencies -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/phaser.js"></script>
+    <script src="assets/js/phaser-input.min.js"></script>
+
+    <!-- game states -->
+    <script src="game/state/preload.state.js"></script>
+    <script src="game/state/menu.state.js"></script>
+    <script src="game/state/game.state.js"></script>
+    <script src="game/state/gameover.state.js"></script>
+
+    <!-- game core -->
+    <script src="game/main.js"></script>
 </body>
 </html>
