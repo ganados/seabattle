@@ -4,6 +4,7 @@ const game = new Phaser.Game(854, 480, Phaser.EXACT_FIT, 'game-container');
 // plugins
 Phaser.Device.whenReady(function () {
     game.plugins.add(PhaserInput.Plugin);
+    game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 });
 
 // all states
