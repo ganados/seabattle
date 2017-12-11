@@ -13,7 +13,7 @@ var gameState = {
         // 0 - host, 1 - guest
         this.turn;
 
-        // state of a game
+        // states of the game
         // 0 - waiting for second player
         // 1 - prepare and placing ships
         // 2 - game in
@@ -39,8 +39,8 @@ var gameState = {
         this.state = 0;
 
         // place two background
-        this.hostActiveBackground = game.add.sprite(40, 60, 'active-bg');
-        this.guestActiveBackground = game.add.sprite(454, 60, 'active-bg');
+        this.hostActiveBackground = game.add.sprite(40, 100, 'active-bg');
+        this.guestActiveBackground = game.add.sprite(454, 100, 'active-bg');
 
         // add two groups
         this.hostFieldsGroup = game.add.group();
@@ -49,25 +49,29 @@ var gameState = {
         // create two boards 10x10
         for (let i = 0; i < 10; i++) {
             for (let j = 0; j < 10; j++) {
-                let hostField = game.add.sprite(50 + (i * 34), 70 + (j * 34), 'field');
-                hostField.marked = false;
-                hostField.destroyed = false;
-                hostField.inputEnabled = true;
-                hostField.team = 'host';
+                let field = game.add.sprite(50 + (i * 34), 40 + 72 + (j * 34), 'field');
+                field.marked = false;
+                field.destroyed = false;
+                field.inputEnabled = true;
+                field.team = 'host';
+                field.posX = i;
+                field.posY = j;
 
                 // event onclick
-                hostField.events.onInputDown.add(this.clickOnField, this);
-                this.hostFieldsGroup.add(hostField);
+                field.events.onInputDown.add(this.clickOnField, this);
+                this.hostFieldsGroup.add(field);
 
-                let guestField = game.add.sprite(464 + (i * 34), 70 + (j * 34), 'field')
-                guestField.marked = false;
-                guestField.destroyed = false;
-                guestField.inputEnabled = true;
-                guestField.team = 'guest';
+                field = game.add.sprite(465 + (i * 34), 40 + 72 + (j * 34), 'field')
+                field.marked = false;
+                field.destroyed = false;
+                field.inputEnabled = true;
+                field.team = 'guest';
+                field.posX = i;
+                field.posY = j;
 
                 // event onclick
-                guestField.events.onInputDown.add(this.clickOnField, this);
-                this.guestFieldsGroup.add(guestField);
+                field.events.onInputDown.add(this.clickOnField, this);
+                this.guestFieldsGroup.add(field);
             }
         }
     },
@@ -112,25 +116,12 @@ var gameState = {
     },
 
     clickOnField: function (field) {
-
+        console.log(field.posX, field.posY, field.team);
     },
 
-    // this probably doesn't work correctly
+    // this probably does not work correctly
     markField: function (field) {
         console.log(field);
-        if (this.turn === 0) {
-            if (field.team === 'host') {
-                field.marked = true;
-                this.turn = 1;
-                console.log('Marked by host');
-            }
-        } else {
-            if (field.team === 'guest') {
-                field.marked = true;
-                this.turn = 0;
-                console.log('Marked by guest');
-            }
-        }
     }
 
 };
