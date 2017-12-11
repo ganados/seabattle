@@ -74,7 +74,7 @@ var menuState = {
     // triggered when clicked on first button
     clickedConnect: function () {
         console.log('Navigated to connect');
-        // game.state.start('gameState');
+        game.state.start('gameState');
     },
 
     // triggered when clicked on second button

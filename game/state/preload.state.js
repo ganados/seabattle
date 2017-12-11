@@ -9,6 +9,8 @@ var preloadState = {
         game.load.image('background-img', 'assets/sprites/bg.png');
         game.load.image('button', 'assets/sprites/button.png');
         game.load.image('button-hover', 'assets/sprites/button-hover.png');
+				game.load.image('field', 'assets/sprites/field.png');
+				game.load.image('active-bg', 'assets/sprites/active.png');
     },
 
 	create: function () {
